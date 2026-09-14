@@ -40,7 +40,15 @@ export default function Navbar() {
           </Link>
         </nav>
         <div className="nav-actions">
-          <button className="btn btn-primary btn-sm">+ New Task</button>
+          <Link href="/tasks/new" className="btn btn-primary btn-sm">
+            + New Task
+          </Link>
+          <button
+            className="mobile-toggle-btn"
+            aria-label="Toggle Navigation Menu"
+          >
+            ☰
+          </button>
         </div>
       </div>
     </header>
