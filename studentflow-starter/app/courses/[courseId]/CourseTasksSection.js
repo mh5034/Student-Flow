@@ -1,10 +1,9 @@
 "use client";
-
 import Link from "next/link";
 import { useTasks } from "@/context/TaskContext";
 import TaskCard from "@/components/TaskCard";
 
-export default function CourseTasksSection({ courseId, courses = [] }) {
+export default function CourseTasksSection({ courseId, courses }) {
   const { tasks, toggleTask, deleteTask } = useTasks();
 
   const courseTasks = tasks.filter((t) => t.courseId === courseId);
@@ -18,7 +17,8 @@ export default function CourseTasksSection({ courseId, courses = [] }) {
     <div className="card">
       <div className="course-tasks-header">
         <h3 className="course-tasks-title">
-          📝 Course Tasks & Assignments ({completedTasks.length}/{courseTasks.length})
+          📝 Course Tasks & Assignments ({completedTasks.length}/
+          {courseTasks.length})
         </h3>
         <span className="course-tasks-percent">
           {progressPercent}% Complete
