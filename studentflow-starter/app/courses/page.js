@@ -2,6 +2,7 @@
 import CourseCard from "@/components/CourseCard";
 import { courses } from "../../data/courses";
 import { useState } from "react";
+import SearchBar from "@/components/SearchBar";
 
 export default function CoursesPage() {
   const [activeFilter, setActiveFilter] = useState("ALL");
@@ -10,7 +11,7 @@ export default function CoursesPage() {
   const filteredCourses = courses
     .filter((course) => {
       if (activeFilter === "ALL") return true;
-      return activeFilter.toLowerCase() === course.category;
+      return activeFilter.toLowerCase() === course.category.toLowerCase();
     })
     .filter(
       (course) =>
@@ -34,17 +35,11 @@ export default function CoursesPage() {
       </div>
       {/* TODO: Implement Course list, SearchBar, and Category Filters */}
       <div className="filters-container">
-        <div className="search-bar-wrapper">
-          <span className="search-icon">🔍</span>
-          <input
-            placeholder="Search courses, instructors, topics..."
-            className="search-input"
-            aria-label="Search"
-            type="text"
-            value={searchQuery}
-            onChange={() => setSearchQuery(event.target.value)}
-          />
-        </div>
+        <SearchBar
+          value={searchQuery}
+          onChange={setSearchQuery}
+          placeholder="Search courses, instructors, topics..."
+        />
         <div className="filter-group">
           <label className="filter-label">Category</label>
           <div className="filter-buttons">

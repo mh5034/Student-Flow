@@ -7,7 +7,10 @@ export default function TaskCard({ task, courses, onToggle, onDelete }) {
   // TODO: Build your TaskCard component here
   const course = courses.find((course) => course.id === task.courseId);
   return (
-    <div key={task.id} className="task-card">
+    <div
+      key={task.id}
+      className={`task-card ${task.status === "completed" && "completed"} ${isOverdue(task) && "overdue-card"}`}
+    >
       {/* TODO: Add completion checkbox, title link, tags, priority badge, and delete button */}
       <div className="task-card-main">
         <button
