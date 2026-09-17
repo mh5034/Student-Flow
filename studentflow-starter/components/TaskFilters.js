@@ -73,16 +73,20 @@ export default function TaskFilters({
           ))}
         </select>
       </div>
-      <div className="filter-group filter-reset-group">
-        <label className="filter-label">&nbsp;</label>
-        <button
-          onClick={() => onReset()}
-          type="button"
-          className="btn btn-ghost btn-sm"
-        >
-          Reset Filters ✕
-        </button>
-      </div>
+      {(statusFilter !== "all" ||
+        priorityFilter !== "all" ||
+        courseFilter !== "all") && (
+        <div className="filter-group filter-reset-group">
+          <label className="filter-label">&nbsp;</label>
+          <button
+            onClick={onReset}
+            type="button"
+            className="btn btn-ghost btn-sm"
+          >
+            Reset Filters ✕
+          </button>
+        </div>
+      )}
     </div>
   );
 }

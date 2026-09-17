@@ -35,7 +35,7 @@ export function TaskProvider({ children }) {
   // TODO 5: Implement addTask(newTask)
 
   const addTask = (newTask) => {
-    setTasks((prevTasks) => [...prevTasks, newTask]);
+    setTasks((prevTasks) => [newTask, ...prevTasks]);
   };
   // TODO 6: Implement toggleTask(taskId)
 

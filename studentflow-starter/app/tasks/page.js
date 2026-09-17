@@ -15,6 +15,8 @@ export default function TasksPage() {
   const [priorityFilter, setPriorityFilter] = useState("all");
   const [courseFilter, setCourseFilter] = useState("all");
 
+  const completedTasks = tasks.filter((task) => task.status === "completed");
+
   const filteredTasks = tasks
     .filter((task) => {
       if (statusFilter === "all") return true;
@@ -47,7 +49,8 @@ export default function TasksPage() {
         <div>
           <h1 className="page-title">Task Manager</h1>
           <p className="page-subtitle">
-            Manage, filter, and track all your course assignments
+            Manage, filter, and track all your course assignments (
+            {completedTasks.length} of {tasks.length} completed).
           </p>
         </div>
         <div className="page-header-actions">

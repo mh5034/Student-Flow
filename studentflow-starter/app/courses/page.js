@@ -5,13 +5,13 @@ import { useState } from "react";
 import SearchBar from "@/components/SearchBar";
 
 export default function CoursesPage() {
-  const [activeFilter, setActiveFilter] = useState("ALL");
+  const [activeFilter, setActiveFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredCourses = courses
     .filter((course) => {
-      if (activeFilter === "ALL") return true;
-      return activeFilter.toLowerCase() === course.category.toLowerCase();
+      if (activeFilter === "all") return true;
+      return activeFilter === course.category.toLowerCase();
     })
     .filter(
       (course) =>
@@ -44,32 +44,37 @@ export default function CoursesPage() {
           <label className="filter-label">Category</label>
           <div className="filter-buttons">
             <button
-              onClick={() => setActiveFilter("ALL")}
-              className={`filter-btn ${activeFilter === "ALL" ? "active" : ""}`}
+              value="all"
+              onClick={(e) => setActiveFilter(e.target.value)}
+              className={`filter-btn ${activeFilter === "all" ? "active" : ""}`}
             >
               ALL
             </button>
             <button
-              onClick={() => setActiveFilter("FRONTEND")}
-              className={`filter-btn ${activeFilter === "FRONTEND" ? "active" : ""}`}
+              value="frontend"
+              onClick={(e) => setActiveFilter(e.target.value)}
+              className={`filter-btn ${activeFilter === "frontend" ? "active" : ""}`}
             >
               FRONTEND
             </button>
             <button
-              onClick={() => setActiveFilter("JAVASCRIPT")}
-              className={`filter-btn ${activeFilter === "JAVASCRIPT" ? "active" : ""}`}
+              value="javascript"
+              onClick={(e) => setActiveFilter(e.target.value)}
+              className={`filter-btn ${activeFilter === "javascript" ? "active" : ""}`}
             >
               JAVASCRIPT
             </button>
             <button
-              onClick={() => setActiveFilter("REACT")}
-              className={`filter-btn ${activeFilter === "REACT" ? "active" : ""}`}
+              value="react"
+              onClick={(e) => setActiveFilter(e.target.value)}
+              className={`filter-btn ${activeFilter === "react" ? "active" : ""}`}
             >
               REACT
             </button>
             <button
-              onClick={() => setActiveFilter("NEXTJS")}
-              className={`filter-btn ${activeFilter === "NEXTJS" ? "active" : ""}`}
+              value="nextjs"
+              onClick={(e) => setActiveFilter(e.target.value)}
+              className={`filter-btn ${activeFilter === "nextjs" ? "active" : ""}`}
             >
               NEXTJS
             </button>
