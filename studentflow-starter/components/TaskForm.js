@@ -54,8 +54,8 @@ export default function TaskForm({ courses = [] }) {
 
     const task = {
       id: generateId(),
-      title: enteredValues.title,
-      description: enteredValues.description,
+      title: enteredValues.title.trim(),
+      description: enteredValues.description.trim(),
       courseId: enteredValues.courseId,
       dueDate: enteredValues.dueDate,
       priority: enteredValues.priority,
@@ -147,7 +147,7 @@ export default function TaskForm({ courses = [] }) {
       </div>
       <div className="form-actions">
         <button
-          onClick={() => router.push("/tasks")}
+          onClick={() => router.back()}
           type="button"
           className="btn btn-secondary"
         >
